@@ -10,7 +10,7 @@ const data = [
     price: 49.3,
     priceText: "€49,30",
     oldPrice: 58.0,
-    oldPriceText: "€58,00",
+    r: "€58,00",
     category: [
       "Wein > Art > Pakete > Art > Aktionspakete",
       "Sale > Kategorien im Sale > Pakete",

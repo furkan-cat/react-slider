@@ -4,9 +4,8 @@ function PageLayout({ children }) {
   return (
     <div
       style={{
-        width: "90%",
-        maxWidth: "1200px",
-        margin: "2.5em auto 2.5em auto",
+        maxWidth: "1300px",
+        margin: "5em auto 2.5em auto",
         backgroundColor: "#f7f7f7",
       }}
     >

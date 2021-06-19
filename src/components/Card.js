@@ -17,21 +17,44 @@ import "swiper/components/scrollbar/scrollbar.scss";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const Card = () => {
-    // const discount = data.
+  // let discount = ((product.oldPrice - product.price) / product.oldPrice) * product.oldPrice;
   return (
     <Swiper
-      spaceBetween={50}
-      slidesPerView={5}
-      navigation
+      navigation={true}
       pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
+      keyboard={{ enabled: true }}
+      breakpoints={{
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 50,
+        },
+        1200: {
+          slidesPerView: 5,
+          spaceBetween: 60,
+        },
+      }}
     >
       {data.map((product) => (
-        <SwiperSlide>
+        <SwiperSlide key={product.productId}  >
           <div className={style.cardContainer}>
-              { <div></div>}
+            {product.oldPrice ? (
+              <div className={style.discount}>
+                {"-" +
+                  (
+                    product.oldPrice -
+                    (product.price / product.oldPrice) * product.oldPrice
+                  ).toFixed(0) +
+                  "%"}
+              </div>
+            ) : null}
             <div className={style.flexCon}>
               <div>
                 <div className={style.imgContainer}>
@@ -45,10 +68,12 @@ const Card = () => {
               </div>
               <div>
                 <div className={style.productPrice}>
-                  <span>{product.priceText}</span>
-                  <span className={style.oldPriceText}>
-                    <del>{product.oldPrice}</del>
-                  </span>
+                  <div className={style.price}>{product.price + "€ *"}</div>
+                  {product.oldPrice ? (
+                    <div className={style.oldPrice}>
+                      {product.oldPrice + "€ *"}
+                    </div>
+                  ) : null}
                 </div>
                 <div className={style.productInfo}>{product.basePrice}</div>
               </div>
