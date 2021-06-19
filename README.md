@@ -30,6 +30,7 @@ Basic react slider with swiftjs npm pack.
 * Swiperjs
 * Fetching hardcoded data 
 * Map rendering
+* Responsive Design
 * Css Manupulation
 * Bootstrap
 
